@@ -1,0 +1,15 @@
+# Project exclude paths
+/target/
+server/
+*.iml
+# Project exclude paths
+/NMS/Interfaces/target/
+/NMS/v1_8_R3/target/
+/NMS/v1_9_R2/target/
+/NMS/v1_10_R1/target/
+/NMS/v1_11_R1/target/
+/NMS/v1_12_R1/target/
+/NMS/v1_13_R2/target/
+/NMS/v1_14_R1/target/
+/NMS/v1_15_R1/target/
+/Plugin/target/

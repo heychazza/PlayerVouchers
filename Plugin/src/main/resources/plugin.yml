@@ -1,0 +1,6 @@
+name: CIFY${plugin}
+version: ${project.version}
+main: ${package}
+author: "CodeItForYou"
+softdepend: ["WorldGuard"]
+website: https://codeitforyou.com/
