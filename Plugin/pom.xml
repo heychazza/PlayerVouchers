@@ -7,7 +7,7 @@
     <parent>
         <groupId>com.codeitforyou</groupId>
         <artifactId>vouchers-parent</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.2</version>
     </parent>
 
     <artifactId>vouchers-plugin</artifactId>
@@ -42,63 +42,9 @@
         </dependency>
 
         <dependency>
-            <groupId>${project.parent.groupId}</groupId>
-            <artifactId>vouchers-nms-interfaces</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>${project.parent.groupId}</groupId>
-            <artifactId>vouchers-nms-v1_8_r3</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>${project.parent.groupId}</groupId>
-            <artifactId>vouchers-nms-v1_9_r1</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>${project.parent.groupId}</groupId>
-            <artifactId>vouchers-nms-v1_10_r1</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>${project.parent.groupId}</groupId>
-            <artifactId>vouchers-nms-v1_11_r1</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>${project.parent.groupId}</groupId>
-            <artifactId>vouchers-nms-v1_12_r1</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>${project.parent.groupId}</groupId>
-            <artifactId>vouchers-nms-v1_13_r2</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>${project.parent.groupId}</groupId>
-            <artifactId>vouchers-nms-v1_14_r1</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>${project.parent.groupId}</groupId>
-            <artifactId>vouchers-nms-v1_15_r1</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-
-        <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.9.4-R0.1-SNAPSHOT</version>
+            <version>1.15.2-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
 
@@ -159,36 +105,6 @@
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>com.zelix.plugins</groupId>
-                <artifactId>zkm-plugin</artifactId>
-                <version>1.0.3</version>
-                <dependencies>
-                    <dependency>
-                        <groupId>com.zelix.plugins</groupId>
-                        <artifactId>ZKM</artifactId>
-                        <version>10.0.0</version>
-                        <scope>system</scope>
-                        <systemPath>D:/Documents/Development/Obfuscation/ZKM/ZKM.jar</systemPath>
-                    </dependency>
-                </dependencies>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>obfuscate</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <!-- Will be used to inject values into the plugin but will not be in project properties -->
-                    <isSkip>false</isSkip>
-                    <scriptFile>../script.txt</scriptFile>
-                    <classpathLibs>
-                        <lib>${java.home}/lib/rt.jar</lib>
-                    </classpathLibs>
-                </configuration>
-            </plugin>
-            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
                 <version>3.2.1</version>
@@ -223,6 +139,36 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.zelix.plugins</groupId>
+                <artifactId>zkm-plugin</artifactId>
+                <version>1.0.3</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.zelix.plugins</groupId>
+                        <artifactId>ZKM</artifactId>
+                        <version>10.0.0</version>
+                        <scope>system</scope>
+                        <systemPath>D:/Documents/Development/Obfuscation/ZKM/ZKM.jar</systemPath>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>obfuscate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <!-- Will be used to inject values into the plugin but will not be in project properties -->
+                    <isSkip>false</isSkip>
+                    <scriptFile>../script.txt</scriptFile>
+                    <classpathLibs>
+                        <lib>${java.home}/lib/rt.jar</lib>
+                    </classpathLibs>
+                </configuration>
             </plugin>
         </plugins>
     </build>

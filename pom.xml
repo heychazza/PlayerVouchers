@@ -6,7 +6,7 @@
     <groupId>com.codeitforyou</groupId>
     <artifactId>vouchers-parent</artifactId>
     <name>Vouchers - Parent</name>
-    <version>1.0.0</version>
+    <version>1.0.2</version>
     <packaging>pom</packaging>
 
     <properties>
@@ -17,16 +17,7 @@
     </properties>
 
     <modules>
-        <module>NMS/v1_8_R3</module>
-        <module>NMS/v1_9_R2</module>
-        <module>NMS/v1_10_R1</module>
-        <module>NMS/v1_11_R1</module>
-        <module>NMS/v1_12_R1</module>
-        <module>NMS/v1_13_R2</module>
-        <module>NMS/v1_14_R1</module>
-        <module>NMS/v1_15_R1</module>
         <module>Plugin</module>
-        <module>NMS/Interfaces</module>
     </modules>
 
     <build>

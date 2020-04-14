@@ -51,7 +51,7 @@ import java.util.regex.Pattern;
  * Mojang API: https://wiki.vg/Mojang_API
  *
  * @author Crypto Morin
- * @version 1.0.0
+ * @version 1.0.2
  * @see XMaterial
  */
 public class SkullUtils {

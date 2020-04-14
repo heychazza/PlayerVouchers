@@ -24,11 +24,11 @@ public class GiveAllCommand {
             Lang.ERROR_INVALID_VOUCHER.send(sender, Lang.PREFIX.asString());
             return;
         }
-        ItemStack voucherItem = voucher.getItem().clone();
-        voucherItem.setAmount(amount);
 
         int onlineCount = 0;
         for (Player player : Bukkit.getServer().getOnlinePlayers()) {
+            ItemStack voucherItem = voucher.getItem(player);
+            voucherItem.setAmount(amount);
             player.getInventory().addItem(voucherItem);
             onlineCount++;
         }

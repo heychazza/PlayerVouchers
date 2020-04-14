@@ -30,7 +30,7 @@ public class GiveCommand {
             Lang.ERROR_INVALID_VOUCHER.send(sender, Lang.PREFIX.asString());
             return;
         }
-        ItemStack voucherItem = voucher.getItem().clone();
+        ItemStack voucherItem = voucher.getItem(target);
         voucherItem.setAmount(amount);
         target.getInventory().addItem(voucherItem);
 

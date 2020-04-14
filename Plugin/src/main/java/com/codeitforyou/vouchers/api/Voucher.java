@@ -1,15 +1,19 @@
 package com.codeitforyou.vouchers.api;
 
+import com.codeitforyou.lib.api.general.PAPIUtil;
+import com.codeitforyou.lib.api.general.StringUtil;
 import com.codeitforyou.lib.api.nbt.NBT;
 import com.codeitforyou.vouchers.Vouchers;
 import com.google.common.collect.Maps;
-import org.apache.commons.lang.StringUtils;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Voucher {
@@ -18,8 +22,6 @@ public class Voucher {
     private String id;
     private ItemStack item;
     private boolean permission;
-    private long minAmount;
-    private long maxAmount;
     private List<Reward> rewards;
     private List<String> blacklistedRegions;
     private List<String> blacklistedWorlds;
@@ -33,13 +35,11 @@ public class Voucher {
         this.item = item;
     }
 
-    public Voucher(String id, ItemStack item, boolean permission, Long minAmount, Long maxAmount, List<Reward> rewards, List<String> blacklistedRegions, List<String> blacklistedWorlds) {
+    public Voucher(String id, ItemStack item, boolean permission, List<Reward> rewards, List<String> blacklistedRegions, List<String> blacklistedWorlds) {
         this.id = id;
         this.item = item;
         this.permission = permission;
         this.rewards = rewards;
-        this.minAmount = minAmount;
-        this.maxAmount = maxAmount;
         this.blacklistedRegions = blacklistedRegions;
         this.blacklistedWorlds = blacklistedWorlds;
     }
@@ -61,14 +61,6 @@ public class Voucher {
         this.permission = permission;
     }
 
-    public void setMinAmount(long minAmount) {
-        this.minAmount = minAmount;
-    }
-
-    public void setMaxAmount(long maxAmount) {
-        this.maxAmount = maxAmount;
-    }
-
     public String getId() {
         return id;
     }
@@ -77,8 +69,25 @@ public class Voucher {
         this.id = id;
     }
 
-    public ItemStack getItem() {
-        return item;
+    public ItemStack getItem(Player player) {
+        ItemStack itemStack = item.clone();
+        if (itemStack.hasItemMeta()) {
+            ItemMeta itemMeta = itemStack.getItemMeta();
+
+            if (itemMeta.hasDisplayName()) {
+                itemMeta.setDisplayName(StringUtil.translate(PAPIUtil.parse(player, itemMeta.getDisplayName())));
+            }
+
+            if (itemMeta.hasLore()) {
+                List<String> updatedLore = itemMeta.getLore();
+                updatedLore.replaceAll(lore -> StringUtil.translate(PAPIUtil.parse(player, lore)));
+                itemMeta.setLore(updatedLore);
+            }
+
+            itemStack.setItemMeta(itemMeta);
+
+        }
+        return itemStack;
     }
 
     public void setItem(ItemStack item) {
@@ -123,7 +132,7 @@ public class Voucher {
         rewards.sort(Comparator.comparing(Reward::getChance));
 
         boolean hasReward = false;
-        while(!hasReward) {
+        while (!hasReward) {
             double randomChance = ThreadLocalRandom.current().nextDouble(100);
 //            VOUCHERS.getLogger().info(" ");
 //            VOUCHERS.getLogger().info("Random Chance: " + randomChance + "%");

@@ -9,7 +9,6 @@ import com.codeitforyou.vouchers.maven.MavenLibrary;
 import com.codeitforyou.vouchers.maven.Repository;
 import com.codeitforyou.vouchers.registerable.CommandRegisterable;
 import com.codeitforyou.vouchers.registerable.ListenerRegisterable;
-import com.codeitforyou.vouchers.registerable.TitleRegisterable;
 import com.codeitforyou.vouchers.util.Lang;
 import com.codeitforyou.vouchers.util.VoucherMapper;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -44,7 +43,6 @@ public class Vouchers extends JavaPlugin {
         saveDefaultConfig();
 
         LibraryLoader.loadAll(Vouchers.class);
-        TitleRegisterable.register();
 
         loadVouchers();
 
