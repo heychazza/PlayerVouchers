@@ -25,6 +25,8 @@ public class Reward {
 
     public void execute(Player p, Voucher voucher) {
         List<String> rewards = new ArrayList<>(actions);
+        rewards.replaceAll(item -> item.replace("%player%", p.getName()));
+        rewards.replaceAll(item -> item.replace("%uuid%", p.getUniqueId().toString()));
         rewards.replaceAll(item -> item.replace("%voucher%", voucher.getId()));
         Vouchers.getInstance().getActionManager().runActions(p, rewards);
     }

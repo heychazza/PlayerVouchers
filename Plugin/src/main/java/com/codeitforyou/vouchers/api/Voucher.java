@@ -134,47 +134,15 @@ public class Voucher {
         boolean hasReward = false;
         while (!hasReward) {
             double randomChance = ThreadLocalRandom.current().nextDouble(100);
-//            VOUCHERS.getLogger().info(" ");
-//            VOUCHERS.getLogger().info("Random Chance: " + randomChance + "%");
-//            VOUCHERS.getLogger().info(" ");
+
             for (Reward reward : rewards) {
-//                VOUCHERS.getLogger().info("Reward Chance: " + reward.getChance() + "%");
-//                VOUCHERS.getLogger().info("Reward Actions: " + StringUtils.join(reward.getActions(), ";"));
                 boolean lessOrEqual = reward.canExecute(randomChance);
-//                VOUCHERS.getLogger().info("Reward Calculation: " + reward.getChance() + "<=" + randomChance + ": " + (lessOrEqual ? "Yes!" : "No.."));
                 if (lessOrEqual) {
-//                    VOUCHERS.getLogger().info("!! EXECUTED REWARD WITH CHANCE " + reward.getChance() + "% !!");
                     hasReward = true;
                     reward.execute(player, this);
                     break;
                 }
-
-//                VOUCHERS.getLogger().info(" ");
             }
-//            VOUCHERS.getLogger().info("- - -");
         }
     }
-
-//                StringBuilder stringBuilder = new StringBuilder();
-//
-//                String unrevealed = number == 0 ? "" : numberStr.substring(0, number);
-//                String revealed = number == 0 ? numberStr : numberStr.split(unrevealed, 2)[1];
-//
-//                stringBuilder.append(getUnrevealedFirstFormat());
-//                stringBuilder.append(unrevealed);
-//
-//                stringBuilder.append(getUnrevealedSecondFormat());
-//                number--;
-//                stringBuilder.append(revealed);
-//                stringBuilder.append("&r");
-//
-//                JSONObject titleObj = new JSONObject();
-//                titleObj.put("text", stringBuilder.toString());
-//
-//                TitleRegisterable.getTitle().sendTitle(player, StringUtil.translate(titleObj.toJSONString()));
-//
-//                JSONObject subTitleObj = new JSONObject();
-//                subTitleObj.put("text", getUnrevealedSubtitle());
-//
-//                TitleRegisterable.getTitle().sendSubtitle(player, StringUtil.translate(subTitleObj.toJSONString()));
 }

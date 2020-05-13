@@ -7,7 +7,7 @@
     <parent>
         <groupId>com.codeitforyou</groupId>
         <artifactId>vouchers-parent</artifactId>
-        <version>1.0.2</version>
+        <version>1.0.3</version>
     </parent>
 
     <artifactId>vouchers-plugin</artifactId>
